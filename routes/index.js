@@ -1,5 +1,5 @@
-IP = '54.94.156.206'
-//IP = 'localhost'
+//IP = '54.94.156.206'
+IP = 'localhost'
 PORT = '5222'
 SERVER = IP+':'+PORT
 
@@ -9,6 +9,7 @@ URL_GET_KEYWORDS         	 = 'http://'+SERVER+'/api/v.1/mediassocais/get/tweet/k
 URL_DELETE_KEYWORDS      	 = 'http://'+SERVER+'/api/v.1/mediassocais/delete/tweet/Keywords'
 URL_SAVE_KEYWORDS        	 = 'http://'+SERVER+'/api/v.1/mediassocais/save/tweet/keywords'
 URL_GET_MAP_REDUCE       	 = 'http://'+SERVER+'/api/v.1/mapreduce/get/mapreduces'
+
 URL_FIND_STUDENTS        	 = 'http://'+SERVER+'/api/v.1/estudantes/get/status/<params>'
 URL_FIND_TWEET_USER      	 = 'http://'+SERVER+'/api/v.1/estudantes/get/tweet/usersname/<params>'
 URL_INSERE_BLACKLIST     	 = 'http://'+SERVER+'/api/v.1/estudantes/blacklist/usersname/'
@@ -199,6 +200,7 @@ module.exports = function(app, passport){
 
 	router.get('/estudantes', function(req, res){
 		url = URL_FIND_STUDENTS.replace(/<params>/g,'student');
+		
 		requestUtilies.request( url, function( json_resquests ){
 			resultado = estudanteController.getEstudantesByStatus( json_resquests);
 		
@@ -296,7 +298,7 @@ module.exports = function(app, passport){
 
 	router.post('/executarEmr', function(req, res){
 		requestUtilies.requestPost(EXECUTE_EMR, req.body, function( json_resquests ){
-			console.log( json_resquests );
+			res.json( json_resquests );
 	    });
 	});
 
