@@ -1,4 +1,5 @@
 IP = '54.94.156.206'
+//IP = 'localhost'
 PORT = '5222'
 SERVER = IP+':'+PORT
 
@@ -151,12 +152,14 @@ module.exports = function(app, passport){
 
 	router.post('/salvarpesquisamidia' ,function(req, res){
 
-		if(req.body.keysWords == ''){
-		requestUtilies.requestPost(URL_SAVE_KEYWORDS, req.body, function( json_resquests ){
-			if(json_resquests.status == 'ok'){
-				res.redirect('/midiassociais')
-			 }
-	    });
+		if(req.body.keysWords != ''){
+
+			requestUtilies.requestPost(URL_SAVE_KEYWORDS, req.body, function( json_resquests ){
+				if(json_resquests.status == 'ok'){
+					res.redirect('/midiassociais')
+				 }
+		    });
+
 		}
 	});
 
