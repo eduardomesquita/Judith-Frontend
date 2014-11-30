@@ -19,6 +19,7 @@ block content
                     table.sortable#myTableBlacklist.table.table-hover
                         thead
                             tr
+                                td
                                 each campo in campos
                                     td
                                     th.capitalize #{campo}
@@ -26,8 +27,10 @@ block content
 
                                 td
                         tbody
+                            - var count = 1
                             each dado in resultado
                                 tr
+                                    td  #{count}
                                     td 
                                     th.values  @#{dado.username}
                                     td
@@ -35,4 +38,5 @@ block content
 
                                     td
                                         input(type='image', src='/images/apagar.png', onclick="removeUsername('#{dado.username}')")
-                            
+
+                                - count++

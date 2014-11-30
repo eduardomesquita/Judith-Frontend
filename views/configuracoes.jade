@@ -53,14 +53,16 @@ block content
                             td
                                 select(name='slaveInstance' )
                                     option(value='m1.small',  selected=('#{resposta.slaveInstance}'==='m1.small' ? "selected" : undefined)) m1.small
-                                    option(value='m3.medium' selected=('#{resposta.slaveInstance}'==='m3.medium' ? "selected" : undefined)) m3.medium
-                                    option(value='m3.large' selected=('#{resposta.slaveInstance}'==='m3.large' ? "selected" : undefined)) m3.large
-                                    option(value='m3.2xlarge' selected=('#{resposta.slaveInstance}'==='m3.2xlarge' ? "selected" : undefined)) m3.2xlarge
-                                    option(value='c3.large' selected=('#{resposta.slaveInstance}'==='c3.large' ? "selected" : undefined)) c3.large
-                                    option(value='c3.large' selected=('#{resposta.slaveInstance}'==='c3.large' ? "selected" : undefined)) c3.large
-                                    option(value='c3.2xlarge' selected=('#{resposta.slaveInstance}'==='c3.2xlarge' ? "selected" : undefined)) c3.2xlarge
-                                    option(value='c3.4xlarge' selected=('#{resposta.slaveInstance}'==='c3.4xlarge' ? "selected" : undefined)) c3.4xlarge
-                                    option(value='c3.8xlarge' selected=('#{resposta.slaveInstance}'==='c3.8xlarge' ? "selected" : undefined)) c3.8xlarge
+                                    option(value='m1.medium' selected=('#{resposta.slaveInstance}'==='m1.medium' ? "selected" : undefined)) m1.medium
+                                    option(value='m1.large' selected=('#{resposta.slaveInstance}'==='m1.large' ? "selected" : undefined)) m1.large
+                                    option(value='m1.xlarge' selected=('#{resposta.slaveInstance}'==='m1.xlarge' ? "selected" : undefined)) m1.xlarge
+                                    option(value='m3.xlarge' selected=('#{resposta.slaveInstance}'==='m3.xlarge' ? "selected" : undefined)) m3.xlarge
+                                    option(value='m3.2xlarge' selected=('#{resposta.slaveInstance}'==='m3.2xlargee' ? "selected" : undefined)) m3.2xlarge
+                                    option(value='c1.medium' selected=('#{resposta.slaveInstance}'==='c1.medium' ? "selected" : undefined)) c1.medium (hardware otimizado)
+                                    option(value='c1.xlarge' selected=('#{resposta.slaveInstance}'==='c1.xlarge' ? "selected" : undefined)) c1.xlarge (hardware otimizado)
+                                    option(value='m2.xlarge' selected=('#{resposta.slaveInstance}'==='m2.xlarge' ? "selected" : undefined)) m2.xlarge (memória otimizada)
+                                    option(value='m2.2xlarge' selected=('#{resposta.slaveInstance}'==='m2.2xlarge' ? "selected" : undefined)) m2.2xlarge (memória otimizada)
+                                    option(value='m2.4xlarge' selected=('#{resposta.slaveInstance}'==='m2.4xlarge' ? "selected" : undefined)) m2.4xlarge (memória otimizada)
 
                     tr
                         th
@@ -75,14 +77,16 @@ block content
                             td
                                 select(name='masterInstance' )
                                     option(value='m1.small',  selected=('#{resposta.masterInstance}'==='m1.small' ? "selected" : undefined)) m1.small
-                                    option(value='m3.medium' selected=('#{resposta.masterInstance}'==='m3.medium' ? "selected" : undefined)) m3.medium
-                                    option(value='m3.large' selected=('#{resposta.masterInstance}'==='m3.large' ? "selected" : undefined)) m3.large
-                                    option(value='m3.2xlarge' selected=('#{resposta.masterInstance}'==='m3.2xlarge' ? "selected" : undefined)) m3.2xlarge
-                                    option(value='c3.large' selected=('#{resposta.masterInstance}'==='c3.large' ? "selected" : undefined)) c3.large
-                                    option(value='c3.large' selected=('#{resposta.masterInstance}'==='c3.large' ? "selected" : undefined)) c3.large
-                                    option(value='c3.2xlarge' selected=('#{resposta.masterInstance}'==='c3.2xlarge' ? "selected" : undefined)) c3.2xlarge
-                                    option(value='c3.4xlarge' selected=('#{resposta.masterInstance}'==='c3.4xlarge' ? "selected" : undefined)) c3.4xlarge
-                                    option(value='c3.8xlarge' selected=('#{resposta.masterInstance}'==='c3.8xlarge' ? "selected" : undefined)) c3.8xlarge
+                                    option(value='m1.medium' selected=('#{resposta.masterInstance}'==='m1.medium' ? "selected" : undefined)) m1.medium
+                                    option(value='m1.large' selected=('#{resposta.masterInstance}'==='m1.large' ? "selected" : undefined)) m1.large
+                                    option(value='m1.xlarge' selected=('#{resposta.masterInstance}'==='m1.xlarge' ? "selected" : undefined)) m1.xlarge
+                                    option(value='m3.xlarge' selected=('#{resposta.masterInstance}'==='m3.xlarge' ? "selected" : undefined)) m3.xlarge
+                                    option(value='m3.2xlarge' selected=('#{resposta.masterInstance}'==='m3.2xlargee' ? "selected" : undefined)) m3.2xlarge
+                                    option(value='c1.medium' selected=('#{resposta.masterInstance}'==='c1.medium' ? "selected" : undefined)) c1.medium (hardware otimizado)
+                                    option(value='c1.xlarge' selected=('#{resposta.masterInstance}'==='c1.xlarge' ? "selected" : undefined)) c1.xlarge (hardware otimizado)
+                                    option(value='m2.xlarge' selected=('#{resposta.masterInstance}'==='m2.xlarge' ? "selected" : undefined)) m2.xlarge (memória otimizada)
+                                    option(value='m2.2xlarge' selected=('#{resposta.masterInstance}'==='m2.2xlarge' ? "selected" : undefined)) m2.2xlarge (memória otimizada)
+                                    option(value='m2.4xlarge' selected=('#{resposta.masterInstance}'==='m2.4xlarge' ? "selected" : undefined)) m2.4xlarge (memória otimizada)
 
             div#h3T
                 h3 MapReduce
