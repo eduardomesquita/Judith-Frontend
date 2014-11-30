@@ -2,8 +2,14 @@
 var debug = require('debug')('sebastiana');
 var app = require('../app');
 
-app.set('port', process.env.PORT || 5333);
-
+var os = require("os");
+if(os.hostname() == 'eduardo-linux'){
+    console.log('rodando na maquina de desenvolvimento')
+    app.set('port', process.env.PORT || 5333);
+}else{
+    console.log('rodando na producao')
+    app.set('port', process.env.PORT || 80);
+}
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);

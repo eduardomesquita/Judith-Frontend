@@ -1,6 +1,17 @@
-//IP = '54.94.156.206'
-IP = 'localhost'
-PORT = '5222'
+// IP PUBLICO AWS '54.94.156.206'
+// IP PRIVADO AWS 172.31.26.249
+
+var os = require("os");
+if(os.hostname() == 'eduardo-linux'){
+    console.log('redirecionando para server na maquina de desenvolvimento')
+    IP = 'localhost'
+    PORT = '5222'
+}else{
+    console.log('redirecionando para server na maquina de produção')
+    IP = '172.31.26.249'
+    PORT = '5222'
+}
+
 SERVER = IP+':'+PORT
 
 URL_GRAPHS_PORCENT_STUDENTS  = 'http://'+SERVER+'/api/v.1/graphs/estudantes/porcentStatus'
