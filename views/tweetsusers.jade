@@ -33,12 +33,15 @@ block content
                             td 
                             th Tweet
                             td
-                            th Data
+                            th Data Postagem
 
                     tbody
+                        - var count = 1
                         each dado in resultado
                             tr
-                                td 
+                                td  #{count}
                                 th.values  #{dado.text}
                                 td 
                                 th.values #{dado.created_at}
+
+                            - count++

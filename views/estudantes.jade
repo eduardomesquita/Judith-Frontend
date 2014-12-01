@@ -25,6 +25,7 @@ block content
                 table.sortable#myTableStudante.table.table-hover
                     thead
                         tr
+                            td
                             each campo in campos
                                
                                 th.capitalize #{campo}
@@ -34,9 +35,11 @@ block content
 
                             td
                     tbody
+                        - var count = 1
                         each dado in resultado
                             tr
                                 
+                                td  #{count}
                                 th.values #{dado.status}
                             
                                 th.values @#{dado.usuario}
@@ -51,3 +54,5 @@ block content
 
                                 th
                                     input(type='image', src='/images/apagar.png', onclick="insereBlackList('#{dado.usuario}')")
+
+                            - count++
