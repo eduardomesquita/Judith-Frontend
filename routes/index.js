@@ -14,8 +14,15 @@ if(os.hostname() == 'eduardo-linux'){
 
 SERVER = IP+':'+PORT
 
-URL_GRAPHS_PORCENT_STUDENTS  = 'http://'+SERVER+'/api/v.1/graphs/estudantes/porcentStatus'
-URL_GRAPHS_LOCATION_STUDENTS = 'http://'+SERVER+'/api/v.1/graphs/estudantes/location'
+URL_GRAPHS_PORCENT_STUDENTS  	 = 'http://'+SERVER+'/api/v.1/graphs/estudantes/porcentStatus'
+URL_GRAPHS_LOCATION_STUDENTS 	 = 'http://'+SERVER+'/api/v.1/graphs/estudantes/location'
+URL_GRAPHS_CREATED_MOTH_STUDENTS = 'http://'+SERVER+'/api/v.1/graphs/estudantes/createdAtMoth'
+URL_GRAPHS_CREATED_HOUR_STUDENTS = 'http://'+SERVER+'/api/v.1/graphs/estudantes/createdAtHour'
+URL_GRAPHS_COURSES_HOUR_STUDENTS = 'http://'+SERVER+'/api/v.1/graphs/estudantes/course'
+
+
+
+
 URL_GET_KEYWORDS         	 = 'http://'+SERVER+'/api/v.1/mediassocais/get/tweet/keywords'
 URL_DELETE_KEYWORDS      	 = 'http://'+SERVER+'/api/v.1/mediassocais/delete/tweet/Keywords'
 URL_SAVE_KEYWORDS        	 = 'http://'+SERVER+'/api/v.1/mediassocais/save/tweet/keywords'
@@ -87,21 +94,72 @@ module.exports = function(app, passport){
 
 	router.get('/graphLocationsStudents', function(req, res){
 
-
 		requestUtilies.request(URL_GRAPHS_LOCATION_STUDENTS, function( json_resquests ){
-			
-				locations = json_resquests[0].values;
-				for(i in locations){
-					console.log(locations[i].location);
+
+				render = {}
+				for(i in json_resquests){
+					cidade = json_resquests[i];
+					for( object in  cidade){
+
+						if(object == 'PATOS')
+							nome = 'PATOS DE MIMAS'
+						else if(object == 'PRESIDENTE')
+							nome = 'PRESIDENTE OLEGÁRIO'
+						else if(object == 'CARMO')
+							nome = 'CARMO DO PARANAIBA'
+						else if(object == 'SÃO')
+							nome = 'SÃO GOTARDO'
+						else if( ['0','RUA', 'MINAS', 'BRASIL', 'MG', 'PRES', 'P', 'BR','BRAZIL','PE', 'MINHA'].indexOf(object) != -1 )
+							nome = 'DESCONHECIDO'
+						else
+							nome = object
+
+						if( render.hasOwnProperty( nome )  )
+							render[ nome ] += parseInt(cidade[object])
+						else
+							render[ nome ] = parseInt(cidade[object])
+					}
 				}
-			
 
-			res.json({ 'response' : {} });
+				retorno = [];
+				for( i in render ){
+					if( retorno.length <=6 ){
+						retorno.push({'cidade' : i, 'valor' : render[i] });
+						console.log( {'cidade' : i, 'valor' : render[i] } );
+						
+					}else{
+						break
+					}
+				}
+				res.json({ 'response' :  retorno});
 		});
+	});
 
+	
+
+	router.get('/graphCreatedAtMoth', function(req, res){
+		requestUtilies.request(URL_GRAPHS_CREATED_MOTH_STUDENTS, function( json_resquests ){
+		 	res.json({ 'response' : json_resquests });	
+		});
 	});
 
 
+	router.get('/graphCreatedAtHour', function(req, res){
+
+		requestUtilies.request(URL_GRAPHS_CREATED_HOUR_STUDENTS, function( json_resquests ){
+			console.log( json_resquests );
+		 	res.json({ 'response' : json_resquests });	
+		});
+	});
+
+
+	router.get('/graphCourses', function(req, res){
+
+		requestUtilies.request(URL_GRAPHS_COURSES_HOUR_STUDENTS, function( json_resquests ){
+		
+		 	res.json({ 'response' : json_resquests });	
+		});
+	});
 
 
 	// HOME

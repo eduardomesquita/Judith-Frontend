@@ -14,12 +14,40 @@
         <script src="/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
         </script>
+
+        <header class="header">
+            <h1></h1>
+            <ul class="nav nav-tabs">
+                <li>
+                   <a href="/logout">SAIR</a>
+                </li>
+                <li>
+                    <a href="/configuracoes">CONFIG</a>
+                </li>
+                <li>
+                    <a href="/blacklist">BLACKLIST</a>
+                </li>
+                <li>
+                    <a href="/midiassociais">MÍDIAS SOCIAIS</a>
+                </li>
+                <li>
+                    <a href="/mapreduce">MAP REDUCE</a>
+                </li>
+                <li>
+                    <a href="/estudantes">ESTUDANTES</a>
+                </li>
+                <li>
+                    <a href="/graphs">GRÁFICOS</a>
+                </li>
+                <li>
+                    <a href="/index">HOME</a>
+                </li>
+            </ul>
+        </header>
+
     </head>
 
-    <header class="header">
-        <h1></h1>
-        <ul class="nav nav-tabs"></ul>
-    </header>
+    
 
     <body>
 
@@ -31,13 +59,28 @@
 
 
 
-            <div id="graficos">
+            <div id="graficos"  cellspacing=100 >
 
                      <table id="tabelasgraficos"  >
                         <tr>
                             <td> <div id="container-estudantes"></div> </td>
-                            <td> <div id="container-teste" ></div> </td>
+                            <td> <div id="container-tweets-por-cidade"></div></td>
+                        </tr>
+
+                         <tr>
+                            <td> <div id="container-ano-twitter"></div> </td>
                          </tr>
+
+                        <tr>
+                            <td> <div id="container-tweets-por-hora"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td> <div id="container-tweets-cursos"></div></td>
+                        </tr>
+
+
+
                      </table>
                 
             </div>
