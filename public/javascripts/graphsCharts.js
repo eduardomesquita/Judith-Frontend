@@ -29,12 +29,12 @@ $(function () {
                             name: 'Students',
                             data: [
                                  {
-                                    name: 'Alunos',
+                                    name: 'Estudantes',
                                     y: data['response']['possible'],
                                     sliced: true,
                                     selected: true
                                 },
-                                ['Possíveis Alunos',   data['response']['student']],
+                                ['Possíveis Estudantes',   data['response']['student']],
                                
                             ]
                         }]
@@ -53,7 +53,29 @@ $(function () {
         doGetServer('/graphLocationsStudents', {}, function(data){
             
             data = data['response'];
-           
+
+            vetor1 =undefined
+            vetor2 =undefined
+            vetor3 =undefined
+            vetor4 =undefined
+            vetor5 =undefined
+            vetor6 =undefined
+
+            if(data[1] != undefined)
+                vetor1 = [ data[1].cidade,   data[1].valor ]
+            if(data[2] != undefined)
+                vetor2 = [ data[2].cidade,   data[2].valor ]
+            if(data[3] != undefined)
+                vetor3 = [ data[3].cidade,   data[3].valor ]
+            if(data[4] != undefined)
+                vetor4 = [ data[4].cidade,   data[4].valor ]
+            if(data[5] != undefined)
+                vetor5 = [ data[5].cidade,   data[5].valor ]
+            if(data[6] != undefined)
+                vetor6 = [ data[6].cidade,   data[6].valor ]
+
+
+
             $('#container-tweets-por-cidade').highcharts({
                 chart: {
                     type: 'pie',
@@ -91,12 +113,7 @@ $(function () {
                             sliced: true,
                             selected: true
                         },
-                        [data[1].cidade,   data[1].valor],
-                        [data[2].cidade,   data[2].valor],
-                        [data[3].cidade,   data[3].valor],
-                        [data[4].cidade,   data[4].valor],
-                        [data[5].cidade,   data[5].valor],
-                        [data[6].cidade,   data[6].valor],
+                        vetor1,vetor2,vetor3,vetor4,vetor5,vetor5
                     ]
                 }]
             });
@@ -145,13 +162,15 @@ $(function () {
                         verticalAlign: 'middle',
                         borderWidth: 0
                     },
-                    series: [{
-                        name: 'Possiveis',
-                        data: [student['1'], student['2'], student['3'], student['4'], student['5'], student['6'],student['7'],student['8'],student['9'],student['10'],student['11'],student['12']]
-                    }, {
-                        name: 'Estudantes',
-                        data:  [possible['1'], possible['2'], possible['3'], possible['4'], possible['5'], possible['6'],possible['7'],possible['8'],possible['9'],possible['10'],possible['11'],possible['12']]
-                    }]
+                    series: [  {
+                                    name: 'Estudantes',
+                                    data:  [possible['1'], possible['2'], possible['3'], possible['4'], possible['5'], possible['6'],possible['7'],possible['8'],possible['9'],possible['10'],possible['11'],possible['12']]
+                                },
+                                {
+                                    name: 'Possiveis',
+                                    data: [student['1'], student['2'], student['3'], student['4'], student['5'], student['6'],student['7'],student['8'],student['9'],student['10'],student['11'],student['12']]
+                                }
+                            ]
                 });
 
     });
@@ -198,12 +217,12 @@ $(function () {
                         verticalAlign: 'middle',
                         borderWidth: 0
                     },
-                    series: [{
-                        name: 'Possiveis',
-                        data: [student['00'], student['01'], student['02'], student['03'], student['04'], student['05'],student['06'],student['07'],student['08'],student['09'],student['10'],student['11'],student['12'],student['13'],student['14'],student['15'],student['16'],student['17'],student['18'],student['19'],student['20'],student['21'],student['22'],student['23']]
-                    }, {
+                    series: [ {
                         name: 'Estudantes',
                         data: [possible['00'], possible['01'], possible['02'], possible['03'], possible['04'], possible['05'], possible['06'], possible['07'], possible['08'], possible['09'], possible['10'], possible['11'], possible['12'], possible['13'],possible['14'],possible['15'],possible['16'],possible['17'],possible['18'],possible['19'],possible['20'],possible['21'],possible['22'],possible['23']]
+                    },{
+                        name: 'Possiveis',
+                        data: [student['00'], student['01'], student['02'], student['03'], student['04'], student['05'],student['06'],student['07'],student['08'],student['09'],student['10'],student['11'],student['12'],student['13'],student['14'],student['15'],student['16'],student['17'],student['18'],student['19'],student['20'],student['21'],student['22'],student['23']]
                     }]
                 });
 

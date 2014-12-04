@@ -103,23 +103,27 @@ module.exports = function(app, passport){
 
 		requestUtilies.request(URL_GRAPHS_LOCATION_STUDENTS, function( json_resquests ){	
 				response = [];
+
 				for( i in json_resquests ){
-
-
 					if( response.length <=6 ){
 						object = {};
 						for( j in  json_resquests[i] ){
 							object.cidade = j;
 							object.valor = json_resquests[i][j];
 						}
-
 						response.push(object);
-						console.log(object );
-					}else{
-						break
 					}
 				}
 
+
+				if( response.length <=6 ){
+						
+					for( i=response.length; i<=6; i++  ){
+						response.push(undefined);
+					}
+				}
+
+				
 				res.json({ 'response' :  response});
 		});
 	});
