@@ -14,8 +14,41 @@
 
 }
 
+#container-enem-possivel{
+     min-width:200px;
+    height: 400px;
+    max-width: 500px;
+
+}
+
+
+#container-enem-estudantes{
+     min-width:200px;
+    height: 400px;
+    max-width: 500px;
+    
+}
+
+
 #container-estudantes{
     min-width:200px;
+    height: 400px;
+    max-width: 500px;
+}
+
+
+#container-vestibular{
+
+    min-width:200px;
+    height: 400px;
+    max-width: 500px;
+}
+
+
+
+#container-comine{
+
+     min-width:200px;
     height: 400px;
     max-width: 500px;
 }
@@ -27,6 +60,23 @@
     max-width: 500px;
 }
 
+
+#container-estudantes-palavras{
+
+    min-width:1100px;
+    height: 400px;
+    max-width: 500px;
+
+}
+
+#container-possiveis-palavras{
+
+    min-width:1100px;
+    height: 400px;
+    max-width: 500px;
+
+
+}
 
 
 
@@ -46,10 +96,9 @@
 
 #container-tweets-cursos{
 
-     min-width:1100px;
+    min-width:1100px;
     height: 400px;
     max-width: 500px;
-
 
 }
 

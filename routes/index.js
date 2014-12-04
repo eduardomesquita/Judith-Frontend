@@ -19,8 +19,8 @@ URL_GRAPHS_LOCATION_STUDENTS 	 = 'http://'+SERVER+'/api/v.1/graphs/estudantes/lo
 URL_GRAPHS_CREATED_MOTH_STUDENTS = 'http://'+SERVER+'/api/v.1/graphs/estudantes/createdAtMoth'
 URL_GRAPHS_CREATED_HOUR_STUDENTS = 'http://'+SERVER+'/api/v.1/graphs/estudantes/createdAtHour'
 URL_GRAPHS_COURSES_HOUR_STUDENTS = 'http://'+SERVER+'/api/v.1/graphs/estudantes/course'
-
-
+URL_GRAPHS_PORCENT_WORD          = 'http://'+SERVER+'/api/v.1/graphs/findword/<params1>/<params2>'
+URL_GRAPHS_PORCENT_TREADING      = 'http://'+SERVER+'/api/v.1/graphs/trendingtopics/<params1>'
 
 
 URL_GET_KEYWORDS         	 = 'http://'+SERVER+'/api/v.1/mediassocais/get/tweet/keywords'
@@ -68,7 +68,7 @@ module.exports = function(app, passport){
 				});
 		})(req, res, next);
 	});
-	
+		
 
 	router.get('/logout', function(req, res){
 		 req.logout();
@@ -97,6 +97,98 @@ module.exports = function(app, passport){
 		 	res.json({ 'response' : status_user });	
 		});
 	});
+
+
+
+	router.get('/graphComine', function(req, res){
+
+		URL = URL_GRAPHS_PORCENT_WORD.replace(/<params1>/g,  'COMINE;xicomine').replace(/<params2>/g,  'ESTUDANTE');
+		requestUtilies.request( URL , function( json_resquests ){
+				
+			response = []
+			response.push({ 'chave' : 'INVÁLIDOS' , 'valor' : 0 })
+			for( i in json_resquests){
+				response.push({ 'chave' : i , 'valor' : parseInt(json_resquests[i])  })
+			}
+		 	res.json({ 'response' : response });	
+
+		});
+	});
+
+
+	router.get('/graphVestibular', function(req, res){
+
+		URL = URL_GRAPHS_PORCENT_WORD.replace(/<params1>/g,  'VESTIBULAR;VEST').replace(/<params2>/g,  'POSSIVEL');
+		requestUtilies.request( URL , function( json_resquests ){
+
+			response = []
+			response.push({ 'chave' : 'INVÁLIDOS' , 'valor' : 0 })
+			for( i in json_resquests){
+				response.push({ 'chave' : i , 'valor' : parseInt(json_resquests[i])  })
+			}
+		 	res.json({ 'response' : response });	
+		});
+	});
+
+
+
+	router.get('/graphEnemPossivel', function(req, res){
+
+		URL = URL_GRAPHS_PORCENT_WORD.replace(/<params1>/g,  'enem').replace(/<params2>/g,  'POSSIVEL');
+		requestUtilies.request( URL , function( json_resquests ){
+
+			response = []
+			response.push({ 'chave' : 'INVÁLIDOS' , 'valor' : 0 })
+			for( i in json_resquests){
+				response.push({ 'chave' : i , 'valor' : parseInt(json_resquests[i])  })
+			}
+		 	res.json({ 'response' : response });	
+		});
+	});
+
+
+	router.get('/graphEnemEstudante', function(req, res){
+
+		URL = URL_GRAPHS_PORCENT_WORD.replace(/<params1>/g,  'enem').replace(/<params2>/g,  'ESTUDANTE');
+		requestUtilies.request( URL , function( json_resquests ){
+
+			response = []
+			response.push({ 'chave' : 'INVÁLIDOS' , 'valor' : 0 })
+			for( i in json_resquests){
+				response.push({ 'chave' : i , 'valor' : parseInt(json_resquests[i])  })
+			}
+		 	res.json({ 'response' : response });	
+		});
+	});
+
+
+	router.get('/treadingEstudantes', function(req, res){
+
+		URL = URL_GRAPHS_PORCENT_TREADING.replace(/<params1>/g,  'estudante')
+		requestUtilies.request( URL , function( json_resquests ){
+			res.json({ 'response' : json_resquests });	
+		});
+	});
+
+
+	router.get('/treadingPossiveis', function(req, res){
+
+		URL = URL_GRAPHS_PORCENT_TREADING.replace(/<params1>/g,  'possivel')
+		requestUtilies.request( URL , function( json_resquests ){
+			res.json({ 'response' : json_resquests });	
+		});
+	});
+
+
+
+	
+
+
+	
+
+
+
+
 
 
 	router.get('/graphLocationsStudents', function(req, res){
@@ -140,7 +232,7 @@ module.exports = function(app, passport){
 	router.get('/graphCreatedAtHour', function(req, res){
 
 		requestUtilies.request(URL_GRAPHS_CREATED_HOUR_STUDENTS, function( json_resquests ){
-			console.log( json_resquests );
+		
 		 	res.json({ 'response' : json_resquests });	
 		});
 	});
@@ -344,7 +436,6 @@ module.exports = function(app, passport){
 	router.get('/configuracoes', function(req, res){
 		
 		requestUtilies.request(GET_CONFIG,function( json_resquests ){
-			console.log(json_resquests[0])
 			res.render('configuracoes',{'resposta': json_resquests[0]});
 
 		});		

@@ -1,59 +1,54 @@
 $(function () {
 
-            doGetServer('/graphPorcentStudents', {}, function(data){
+        doGetServer('/graphPorcentStudents', {}, function(data){
 
-                        $('#container-estudantes').highcharts({
-                                chart: {
-                                    plotBackgroundColor: null,
-                                    plotBorderWidth: null,//null,
-                                    plotShadow: false
-                                },
-                                title: {
-                                    text: 'Tipos de usuários: ( total ' + data['response']['total'] + ' usuários)'
-                                },
-                                tooltip: {
-                                    pointFormat: '{series.name}: <b>{point.percentage:.0f}%</b>'
-                                },
-                                plotOptions: {
-                                    pie: {
-                                       allowPointSelect: true,
-                                       cursor: 'pointer',
-                                        dataLabels: {
-                                            enabled: false
-                                        },
-                                        showInLegend: true
-                                    }
-                                },
-                            series: [{
-                            type: 'pie',
-                            name: 'Students',
-                            data: [
-                                 {
-                                    name: 'Estudantes',
-                                    y: data['response']['possible'],
-                                    sliced: true,
-                                    selected: true
-                                },
-                                ['Possíveis Estudantes',   data['response']['student']],
-                               
-                            ]
-                        }]
-                    });  
-            });   
+                    $('#container-estudantes').highcharts({
+                            chart: {
+                                plotBackgroundColor: null,
+                                plotBorderWidth: null,//null,
+                                plotShadow: false
+                            },
+                            title: {
+                                text: 'Tipos de usuários: Total ' + data['response']['total'] + ' usuários'
+                            },
+                            tooltip: {
+                                pointFormat: '{series.name}: <b>{point.percentage:.0f}%</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                   allowPointSelect: true,
+                                   cursor: 'pointer',
+                                    dataLabels: {
+                                        enabled: false
+                                    },
+                                    showInLegend: true
+                                }
+                            },
+                        series: [{
+                        type: 'pie',
+                        name: 'Students',
+                        data: [{
+                                 name: 'Estudantes',
+                                 y: data['response']['possible'],
+                                 sliced: true,
+                                 selected: true
+                               },
+                               ['Possíveis Estudantes',   data['response']['student']],
+                           
+                        ]
+                    }]
+                });  
+        });   
 });
-
 
 
 
 
 $(function () {
 
-
-        
         doGetServer('/graphLocationsStudents', {}, function(data){
-            
-            data = data['response'];
 
+            data = data['response'];
             vetor1 =undefined
             vetor2 =undefined
             vetor3 =undefined
@@ -73,7 +68,6 @@ $(function () {
                 vetor5 = [ data[5].cidade,   data[5].valor ]
             if(data[6] != undefined)
                 vetor6 = [ data[6].cidade,   data[6].valor ]
-
 
 
             $('#container-tweets-por-cidade').highcharts({
@@ -135,7 +129,7 @@ $(function () {
 
                 $('#container-ano-twitter').highcharts({
                     title: {
-                        text: 'Posts no Twitter por ano',
+                        text: 'Análise de tweets por mês',
                         x: -20 //center
                     },
                     
@@ -188,7 +182,7 @@ $(function () {
              
                 $('#container-tweets-por-hora').highcharts({
                     title: {
-                        text: 'Posts no Twitter horas',
+                        text: 'Análise de tweets por horas',
                         x: -20 //center
                     },
                     
@@ -237,7 +231,6 @@ $(function () {
 
 $(function () {
 
-    
     doGetServer('/graphCourses', {}, function(data){
 
         categ = []
@@ -259,7 +252,7 @@ $(function () {
                 type: 'column'
             },
             title: {
-                text: 'Cursos mais comentados no Twitter'
+                text: 'Cursos do Unipam no Twitter'
             },
             subtitle: {
                 text: ''
@@ -295,6 +288,383 @@ $(function () {
                             name: 'Possíveis Estudantes',
                         data: POSSIVEL
                       }
+                    ]
+        });
+    
+     });
+});
+
+
+
+
+
+$(function () {
+
+    
+        doGetServer('/graphComine', {}, function(response){
+
+            total = 0;
+            response  = response['response'];
+            data = [];
+            if( response.length > 1 ){
+                data.push({ name: response[0].chave, y: response[0].valor, sliced: true, selected: true  })
+                total += parseInt(response[0].valor)
+
+                for(i=1; i<response.length;i++){
+                    data.push( [response[i].chave, response[i].valor] )
+                    total += parseInt(response[i].valor)
+                }
+            }else
+                data.push({ name: response[0].chave, y: 100, sliced: true, selected: true  })
+            
+
+
+            $('#container-comine').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,//null,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: 'COMINE 2014 - Tweets de estudantes: Total ' + total
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.0f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                           allowPointSelect: true,
+                           cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
+                        }
+                    },
+                series: [{
+                type: 'pie',
+                name: 'Students',
+                data: data
+            }]
+        });  
+            });   
+});
+
+
+
+$(function () {
+  
+    doGetServer('/graphVestibular', {}, function(response){
+
+            total = 0;
+            response  = response['response'];
+            data = [];
+            if( response.length > 1 ){
+                data.push({ name: response[0].chave, y: response[0].valor, sliced: true, selected: true  })
+                total += parseInt(response[0].valor)
+
+                for(i=1; i<response.length;i++){
+                    data.push( [response[i].chave, response[i].valor] )
+                    total += parseInt(response[i].valor)
+                }
+            }else
+                data.push({ name: response[0].chave, y: 100, sliced: true, selected: true  })
+            
+
+
+            $('#container-vestibular').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,//null,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: 'VESTIBULAR UNIPAM 2014 - Tweets possíveis estudantes: Total ' + total
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.0f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                           allowPointSelect: true,
+                           cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
+                        }
+                    },
+                series: [{
+                type: 'pie',
+                name: 'Students',
+                data: data
+            }]
+        });  
+    });   
+});
+
+
+
+
+
+
+
+
+$(function () {
+  
+    doGetServer('/graphEnemPossivel', {}, function(response){
+
+            total = 0;
+            response  = response['response'];
+            data = [];
+            if( response.length > 1 ){
+                data.push({ name: response[0].chave, y: response[0].valor, sliced: true, selected: true  })
+                total += parseInt(response[0].valor)
+
+                for(i=1; i<response.length;i++){
+                    data.push( [response[i].chave, response[i].valor] )
+                    total += parseInt(response[i].valor)
+                }
+            }else
+                data.push({ name: response[0].chave, y: 100, sliced: true, selected: true  })
+            
+
+
+            $('#container-enem-possivel').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,//null,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: 'ENEM 2014 - Possíveis: Total ' + total
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.0f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                           allowPointSelect: true,
+                           cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
+                        }
+                    },
+                series: [{
+                type: 'pie',
+                name: 'Students',
+                data: data
+            }]
+        });  
+    });   
+});
+
+
+
+
+
+
+$(function () {
+  
+    doGetServer('/graphEnemEstudante', {}, function(response){
+
+            total = 0;
+            response  = response['response'];
+            data = [];
+            if( response.length > 1 ){
+                data.push({ name: response[0].chave, y: response[0].valor, sliced: true, selected: true  })
+                total += parseInt(response[0].valor)
+
+                for(i=1; i<response.length;i++){
+                    data.push( [response[i].chave, response[i].valor] )
+                    total += parseInt(response[i].valor)
+                }
+            }else
+                data.push({ name: response[0].chave, y: 100, sliced: true, selected: true  })
+            
+           
+
+            $('#container-enem-estudantes').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,//null,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: 'ENEM 2014 - Estudantes: Total ' + total
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.0f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                           allowPointSelect: true,
+                           cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
+                        }
+                    },
+                series: [{
+                type: 'pie',
+                name: 'Students',
+                data: data
+            }]
+        });  
+    });   
+});
+
+
+
+$(function () {
+
+
+    doGetServer('/treadingEstudantes', {}, function(data){
+
+        data = data['response'];
+
+        categ = []
+        VALORES = []
+
+        for( i in data){
+            for( j in data[i]){
+                if( categ.length < 10){
+                    categ.push(j);
+                }
+            }
+        }
+
+        for(c in categ){
+            name = categ[c];
+            for( i in data){
+                for(j in data[i]){
+                   if( name == j){
+                       console.log(  data[i][j] )
+                       VALORES.push(data[i][j])
+                   }
+                }
+            }
+            
+        }
+
+        $('#container-estudantes-palavras').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Treading topics Unipam estudantes'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                categories: categ
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: ''
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [ {
+                            name: 'Estudantes',
+                            data: VALORES
+                      }
+                      
+                    ]
+        });
+    
+     });
+});
+
+
+
+$(function () {
+
+
+    doGetServer('/treadingPossiveis', {}, function(data){
+
+        data = data['response'];
+
+        categ = []
+        VALORES = []
+
+        for( i in data){
+            for( j in data[i]){
+                if( categ.length < 10){
+                    categ.push(j);
+                }
+            }
+        }
+
+        for(c in categ){
+            name = categ[c];
+            for( i in data){
+                for(j in data[i]){
+                   if( name == j){
+                       console.log(  data[i][j] )
+                       VALORES.push(data[i][j])
+                   }
+                }
+            }
+            
+        }
+
+        $('#container-possiveis-palavras').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Treading topics Unipam possíveis estudantes'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                categories: categ
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: ''
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [ {
+                            name: 'Possíveis Estudantes',
+                            data: VALORES
+                      }
+                      
                     ]
         });
     
