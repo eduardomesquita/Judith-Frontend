@@ -84,54 +84,43 @@ module.exports = function(app, passport){
 	router.get('/graphPorcentStudents', function(req, res){
 
 		requestUtilies.request(URL_GRAPHS_PORCENT_STUDENTS, function( json_resquests ){
-			response_object=json_resquests[0].values;
-			total = parseInt(response_object['possible'])  + parseInt(response_object['student']); 
-		 	response_object['total'] = total;
-		 	res.json({ 'response' : response_object });	
+
+			var status_user = {'possible' : 0, 'student' : 0}
+			for( i in json_resquests){
+				status = json_resquests[i].statusUsers
+				status_user[status] += 1
+			}
+
+			total = parseInt(status_user['possible'])  + parseInt(status_user['student']); 
+		 	status_user['total'] = total;
+		 	console.log(status_user)
+		 	res.json({ 'response' : status_user });	
 		});
 	});
 
 
 	router.get('/graphLocationsStudents', function(req, res){
 
-		requestUtilies.request(URL_GRAPHS_LOCATION_STUDENTS, function( json_resquests ){
+		requestUtilies.request(URL_GRAPHS_LOCATION_STUDENTS, function( json_resquests ){	
+				response = [];
+				for( i in json_resquests ){
 
-				render = {}
-				for(i in json_resquests){
-					cidade = json_resquests[i];
-					for( object in  cidade){
 
-						if(object == 'PATOS')
-							nome = 'PATOS DE MIMAS'
-						else if(object == 'PRESIDENTE')
-							nome = 'PRESIDENTE OLEGÁRIO'
-						else if(object == 'CARMO')
-							nome = 'CARMO DO PARANAIBA'
-						else if(object == 'SÃO')
-							nome = 'SÃO GOTARDO'
-						else if( ['0','RUA', 'MINAS', 'BRASIL', 'MG', 'PRES', 'P', 'BR','BRAZIL','PE', 'MINHA'].indexOf(object) != -1 )
-							nome = 'DESCONHECIDO'
-						else
-							nome = object
+					if( response.length <=6 ){
+						object = {};
+						for( j in  json_resquests[i] ){
+							object.cidade = j;
+							object.valor = json_resquests[i][j];
+						}
 
-						if( render.hasOwnProperty( nome )  )
-							render[ nome ] += parseInt(cidade[object])
-						else
-							render[ nome ] = parseInt(cidade[object])
-					}
-				}
-
-				retorno = [];
-				for( i in render ){
-					if( retorno.length <=6 ){
-						retorno.push({'cidade' : i, 'valor' : render[i] });
-						console.log( {'cidade' : i, 'valor' : render[i] } );
-						
+						response.push(object);
+						console.log(object );
 					}else{
 						break
 					}
 				}
-				res.json({ 'response' :  retorno});
+
+				res.json({ 'response' :  response});
 		});
 	});
 

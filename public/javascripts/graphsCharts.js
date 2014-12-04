@@ -38,16 +38,8 @@ $(function () {
                                
                             ]
                         }]
-                    });
-
-                    
-            });    
-
-
-
- 
-
-
+                    });  
+            });   
 });
 
 
@@ -112,6 +104,7 @@ $(function () {
 
 
 });
+
 
 
 $(function () {
@@ -223,12 +216,6 @@ $(function () {
 
 
 
-
-
-
-
-
-
 $(function () {
 
     
@@ -248,8 +235,6 @@ $(function () {
             ESTUDANTE.push(data['response'][name]['ESTUDANTE'])
         }
 
-
-
         $('#container-tweets-cursos').highcharts({
             chart: {
                 type: 'column'
@@ -258,7 +243,7 @@ $(function () {
                 text: 'Cursos mais comentados no Twitter'
             },
             subtitle: {
-                text: 'Source: WorldClimate.com'
+                text: ''
             },
             xAxis: {
                 categories: categ
@@ -266,7 +251,7 @@ $(function () {
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Rainfall (mm)'
+                    text: ''
                 }
             },
             tooltip: {
