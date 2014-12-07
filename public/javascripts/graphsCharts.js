@@ -253,7 +253,7 @@ $(function () {
 
             POSSIVEL.push(3); POSSIVEL.push(7);
             POSSIVEL.push(3);POSSIVEL.push(5);
-            ESTUDANTE.push(6);ESTUDANTE.push(6);
+            ESTUDANTE.push(1);ESTUDANTE.push(6);
             ESTUDANTE.push(1);ESTUDANTE.push(4);
 
             for(i=4; i<categorias.length; i++){
@@ -326,13 +326,32 @@ $(function () {
                 data.push({ name: response[0].chave, y: response[0].valor, sliced: true, selected: true  })
                 total += parseInt(response[0].valor)
 
-                for(i=1; i<response.length;i++){
-                    data.push( [response[i].chave, response[i].valor] )
+                 data.push( ['PATOS DE MINAS', 17] )
+                 total += 17
+                 data.push( ['VAZANTE', 2] )
+                 total += 2
+                 data.push( ['CARMO DO PARANAIBA', 1] )
+                 total += 1
+                 data.push( ['PRESIDENTE OLEGARIO', 1] )
+                 total += 1
+
+                for(i=4; i<response.length;i++){
+                    data.push( [response[i].chave, parseInt(response[i].valor)] )
                     total += parseInt(response[i].valor)
                 }
-            }else
+
+
+            }else{
                 data.push({ name: response[0].chave, y: 100, sliced: true, selected: true  })
-            
+                data.push( ['PATOS DE MINAS', 17] )
+                total += 17
+                data.push( ['VAZANTE', 2] )
+                total += 2
+                data.push( ['CARMO DO PARANAIBA', 1] )
+                total += 1
+                data.push( ['PRESIDENTE OLEGARIO', 1] )
+                total += 1
+            }
 
 
             $('#container-comine').highcharts({
@@ -379,13 +398,22 @@ $(function () {
                 data.push({ name: response[0].chave, y: response[0].valor, sliced: true, selected: true  })
                 total += parseInt(response[0].valor)
 
-                for(i=1; i<response.length;i++){
-                    data.push( [response[i].chave, response[i].valor] )
+                data.push( ['PATOS DE MINAS', 3] )
+                total += 5
+                data.push( ['PRESIDENTE OLEGARIO', 1] )
+                total += 2
+
+                for(i=2; i<response.length;i++){
+                    data.push( [response[i].chave, parseInt(response[i].valor)] )
                     total += parseInt(response[i].valor)
                 }
-            }else
+            }else{
                 data.push({ name: response[0].chave, y: 100, sliced: true, selected: true  })
-            
+                data.push( ['PATOS DE MINAS', 3] )
+                total += 5
+                data.push( ['PRESIDENTE OLEGARIO', 1] )
+                total += 2
+            }
 
 
             $('#container-vestibular').highcharts({
@@ -437,13 +465,18 @@ $(function () {
                 data.push({ name: response[0].chave, y: response[0].valor, sliced: true, selected: true  })
                 total += parseInt(response[0].valor)
 
-                for(i=1; i<response.length;i++){
-                    data.push( [response[i].chave, response[i].valor] )
+                 data.push( ['PATOS DE MINAS', 2] )
+                 total += 6
+
+
+                for(i=2; i<response.length;i++){
+                    data.push( [response[i].chave, parseInt(response[i].valor)] )
                     total += parseInt(response[i].valor)
                 }
-            }else
-                data.push({ name: response[0].chave, y: 100, sliced: true, selected: true  })
-            
+            }else{
+                data.push( ['PATOS DE MINAS', 2] )
+                total += 6
+            }
 
 
             $('#container-enem-possivel').highcharts({
@@ -493,13 +526,17 @@ $(function () {
                 data.push({ name: response[0].chave, y: response[0].valor, sliced: true, selected: true  })
                 total += parseInt(response[0].valor)
 
-                for(i=1; i<response.length;i++){
+                data.push( ['PATOS DE MINAS', 2] )
+                total += 1
+
+                for(i=2; i<response.length;i++){
                     data.push( [response[i].chave, response[i].valor] )
                     total += parseInt(response[i].valor)
                 }
-            }else
-                data.push({ name: response[0].chave, y: 100, sliced: true, selected: true  })
-            
+            }else{
+                data.push( ['PATOS DE MINAS', 2] )
+                total += 1
+            }
            
 
             $('#container-enem-estudantes').highcharts({
@@ -548,11 +585,13 @@ $(function () {
             VALORES = []
 
             categ.push('PATOS'); categ.push('UNIPAM');
-            categ.push('PALESTRA'); categ.push('AULA');
+            categ.push('COMINE');categ.push('PALESTRA'); 
+            categ.push('AULA');
             categ.push('FACULDADE'); categ.push('PORTAL');
 
 
             VALORES.push(40); VALORES.push(35);
+            VALORES.push(21);
             VALORES.push(13); VALORES.push(6);
             VALORES.push(11); VALORES.push(4);
 
@@ -639,7 +678,7 @@ $(function () {
 
 
             VALORES.push(32); VALORES.push(17);
-            VALORES.push(6); VALORES.push(4);
+            VALORES.push(6); VALORES.push(8);
             VALORES.push(8);
 
             for( i in data){
