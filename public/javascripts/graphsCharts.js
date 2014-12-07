@@ -103,7 +103,7 @@ $(function () {
                         
                         {
                             name: data[0].cidade,
-                            y: parseInt(data[0].valor),
+                            y: parseInt(data[0].valor,
                             sliced: true,
                             selected: true
                         },
@@ -321,8 +321,7 @@ $(function () {
             total = 0;
             response  = response['response'];
             data = [];
-            if( response.length > 1 ){
-               
+            
                  data.push( ['PATOS DE MINAS', 17] )
                  total += 17
                  data.push( ['VAZANTE', 2] )
@@ -337,8 +336,6 @@ $(function () {
                     total += parseInt(response[i].valor)
                 }
 
-
-            }
 
 
             $('#container-comine').highcharts({
@@ -381,19 +378,16 @@ $(function () {
             total = 0;
             response  = response['response'];
             data = [];
-            if( response.length > 1 ){
-             
-                data.push( ['PATOS DE MINAS', 3] )
-                total += 5
-                data.push( ['PRESIDENTE OLEGARIO', 1] )
-                total += 2
+            data.push( ['PATOS DE MINAS', 3] )
+            total += 5
+            data.push( ['PRESIDENTE OLEGARIO', 1] )
+            total += 2
 
-                for(i=2; i<response.length;i++){
-                    data.push( [response[i].chave, parseInt(response[i].valor)] )
-                    total += parseInt(response[i].valor)
-                }
+            for(i=2; i<response.length;i++){
+                data.push( [response[i].chave, parseInt(response[i].valor)] )
+                total += parseInt(response[i].valor)
             }
-
+           
 
             $('#container-vestibular').highcharts({
                     chart: {
@@ -440,16 +434,15 @@ $(function () {
             total = 0;
             response  = response['response'];
             data = [];
-            if( response.length > 1 ){
-               
-                 data.push( ['PATOS DE MINAS', 2] )
-                 total += 6
+           
+             data.push( ['PATOS DE MINAS', 2] )
+             total += 6
 
-                for(i=2; i<response.length;i++){
-                    data.push( [response[i].chave, parseInt(response[i].valor)] )
-                    total += parseInt(response[i].valor)
-                }
+            for(i=2; i<response.length;i++){
+                data.push( [response[i].chave, parseInt(response[i].valor)] )
+                total += parseInt(response[i].valor)
             }
+          
 
 
             $('#container-enem-possivel').highcharts({
@@ -495,16 +488,15 @@ $(function () {
             total = 0;
             response  = response['response'];
             data = [];
-            if( response.length > 1 ){
-              
-                data.push( ['PATOS DE MINAS', 2] )
-                total += 1
+         
+            data.push( ['PATOS DE MINAS', 2] )
+            total += 1
 
-                for(i=2; i<response.length;i++){
-                    data.push( [response[i].chave, response[i].valor] )
-                    total += parseInt(response[i].valor)
-                }
+            for(i=2; i<response.length;i++){
+                data.push( [response[i].chave, response[i].valor] )
+                total += parseInt(response[i].valor)
             }
+       
            
 
             $('#container-enem-estudantes').highcharts({

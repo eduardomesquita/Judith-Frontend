@@ -134,6 +134,7 @@ module.exports = function(app, passport){
 
 		URL = URL_GRAPHS_PORCENT_WORD.replace(/<params1>/g,  'enem').replace(/<params2>/g,  'POSSIVEL');
 		requestUtilies.request( URL , function( json_resquests ){
+
 			response = []
 			for( i in json_resquests){
 				response.push({ 'chave' : i , 'valor' : parseInt(json_resquests[i])  })
@@ -147,7 +148,9 @@ module.exports = function(app, passport){
 
 		URL = URL_GRAPHS_PORCENT_WORD.replace(/<params1>/g,  'enem').replace(/<params2>/g,  'ESTUDANTE');
 		requestUtilies.request( URL , function( json_resquests ){
+
 			response = []
+		
 			for( i in json_resquests){
 				response.push({ 'chave' : i , 'valor' : parseInt(json_resquests[i])  })
 			}
