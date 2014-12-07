@@ -179,18 +179,6 @@ module.exports = function(app, passport){
 		});
 	});
 
-
-
-	
-
-
-	
-
-
-
-
-
-
 	router.get('/graphLocationsStudents', function(req, res){
 
 		requestUtilies.request(URL_GRAPHS_LOCATION_STUDENTS, function( json_resquests ){	

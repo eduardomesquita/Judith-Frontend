@@ -57,17 +57,17 @@ $(function () {
             vetor6 =undefined
 
             if(data[1] != undefined && parseInt(data[1].valor) > 0)
-                vetor1 = [ data[1].cidade,   data[1].valor ]
+                vetor1 = [ data[1].cidade,   parseInt(data[1].valor) ]
             if(data[2] != undefined && parseInt(data[2].valor) > 0)
-                vetor2 = [ data[2].cidade,   data[2].valor ]
+                vetor2 = [ data[2].cidade,   parseInt(data[2].valor) ]
             if(data[3] != undefined && parseInt(data[3].valor) > 0)
-                vetor3 = [ data[3].cidade,   data[3].valor ]
+                vetor3 = [ data[3].cidade,   parseInt(data[3].valor) ]
             if(data[4] != undefined && parseInt(data[4].valor) > 0)
-                vetor4 = [ data[4].cidade,   data[4].valor ]
+                vetor4 = [ data[4].cidade,   parseInt(data[4].valor) ]
             if(data[5] != undefined && parseInt(data[5].valor) > 0)
-                vetor5 = [ data[5].cidade,   data[5].valor ]
+                vetor5 = [ data[5].cidade,   parseInt(data[5].valor) ]
             if(data[6] != undefined && parseInt(data[6].valor) > 0)
-                vetor6 = [ data[6].cidade,   data[6].valor ]
+                vetor6 = [ data[6].cidade,   parseInt(data[6].valor) ]
 
 
             $('#container-tweets-por-cidade').highcharts({
@@ -98,7 +98,7 @@ $(function () {
                 },
                 series: [{
                     type: 'pie',
-                    name: 'Browser share',
+                    name: 'cidades twittadas',
                     data: [
                         
                         {
@@ -158,11 +158,11 @@ $(function () {
                     },
                     series: [  {
                                     name: 'Estudantes',
-                                    data:  [possible['1'], possible['2'], possible['3'], possible['4'], possible['5'], possible['6'],possible['7'],possible['8'],possible['9'],possible['10'],possible['11'],possible['12']]
+                                    data:  [parseInt(possible['1']), parseInt(possible['2']), parseInt(possible['3']), parseInt(possible['4']), parseInt(possible['5']), parseInt(possible['6']), parseInt(possible['7']), parseInt(possible['8']), parseInt(possible['9']), parseInt(possible['10']), parseInt(possible['11']), parseInt(possible['12'])]
                                 },
                                 {
                                     name: 'Possiveis',
-                                    data: [student['1'], student['2'], student['3'], student['4'], student['5'], student['6'],student['7'],student['8'],student['9'],student['10'],student['11'],student['12']]
+                                    data: [parseInt(student['1']), parseInt(student['2']), parseInt(student['3']), parseInt(student['4']), parseInt(student['5']), parseInt(student['6']),parseInt(student['7']),parseInt(student['8']),parseInt(student['9']),parseInt(student['10']),parseInt(student['11']),parseInt(student['12'])]
                                 }
                             ]
                 });
@@ -213,10 +213,10 @@ $(function () {
                     },
                     series: [ {
                         name: 'Estudantes',
-                        data: [possible['00'], possible['01'], possible['02'], possible['03'], possible['04'], possible['05'], possible['06'], possible['07'], possible['08'], possible['09'], possible['10'], possible['11'], possible['12'], possible['13'],possible['14'],possible['15'],possible['16'],possible['17'],possible['18'],possible['19'],possible['20'],possible['21'],possible['22'],possible['23']]
+                        data: [parseInt(possible['00']), parseInt(possible['01']), parseInt(possible['02']), parseInt(possible['03']), parseInt(possible['04']), parseInt(possible['05']), parseInt(possible['06']), parseInt(possible['07']), parseInt(possible['08']), parseInt(possible['09']), parseInt(possible['10']), parseInt(possible['11']), parseInt(possible['12']), parseInt(possible['13']), parseInt(possible['14']), parseInt(possible['15']), parseInt(possible['16']), parseInt(possible['17']), parseInt(possible['18']), parseInt(possible['19']), parseInt(possible['20']), parseInt(possible['21']), parseInt(possible['22']), parseInt(possible['23'])]
                     },{
                         name: 'Possiveis',
-                        data: [student['00'], student['01'], student['02'], student['03'], student['04'], student['05'],student['06'],student['07'],student['08'],student['09'],student['10'],student['11'],student['12'],student['13'],student['14'],student['15'],student['16'],student['17'],student['18'],student['19'],student['20'],student['21'],student['22'],student['23']]
+                        data: [parseInt(student['00']), parseInt(student['01']), parseInt(student['02']), parseInt(student['03']), parseInt(student['04']), parseInt(student['05']), parseInt(student['06']), parseInt(student['07']), parseInt(student['08']), parseInt(student['09']), parseInt(student['10']), parseInt(student['11']), parseInt(student['12']), parseInt(student['13']), parseInt(student['14']), parseInt(student['15']), parseInt(student['16']), parseInt(student['17']), parseInt(student['18']), parseInt(student['19']), parseInt(student['20']), parseInt(student['21']), parseInt(student['22']), parseInt(student['23'])]
                     }]
                 });
 
@@ -285,7 +285,7 @@ $(function () {
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    '<td style="padding:0"><b>{point.y:.f} tweets</b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
@@ -683,7 +683,7 @@ $(function () {
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    '<td style="padding:0"><b>{point.y:.f} tweets</b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
