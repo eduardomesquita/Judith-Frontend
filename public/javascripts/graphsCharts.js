@@ -56,17 +56,17 @@ $(function () {
             vetor5 =undefined
             vetor6 =undefined
 
-            if(data[1] != undefined)
+            if(data[1] != undefined && parseInt(data[1].valor) > 0)
                 vetor1 = [ data[1].cidade,   data[1].valor ]
-            if(data[2] != undefined)
+            if(data[2] != undefined && parseInt(data[2].valor) > 0)
                 vetor2 = [ data[2].cidade,   data[2].valor ]
-            if(data[3] != undefined)
+            if(data[3] != undefined && parseInt(data[3].valor) > 0)
                 vetor3 = [ data[3].cidade,   data[3].valor ]
-            if(data[4] != undefined)
+            if(data[4] != undefined && parseInt(data[4].valor) > 0)
                 vetor4 = [ data[4].cidade,   data[4].valor ]
-            if(data[5] != undefined)
+            if(data[5] != undefined && parseInt(data[5].valor) > 0)
                 vetor5 = [ data[5].cidade,   data[5].valor ]
-            if(data[6] != undefined)
+            if(data[6] != undefined && parseInt(data[6].valor) > 0)
                 vetor6 = [ data[6].cidade,   data[6].valor ]
 
 
@@ -107,7 +107,7 @@ $(function () {
                             sliced: true,
                             selected: true
                         },
-                        vetor1,vetor2,vetor3,vetor4,vetor5,vetor5
+                        vetor1,vetor2,vetor3,vetor4,vetor5,vetor6
                     ]
                 }]
             });
@@ -233,18 +233,34 @@ $(function () {
 
     doGetServer('/graphCourses', {}, function(data){
 
-        categ = []
-        for( i in data['response']){
-            categ.push(i);
-        }
 
-        POSSIVEL = []
-        ESTUDANTE = []
+         POSSIVEL = []; 
+         ESTUDANTE = [];
+         categorias = [];
 
-        for(c in categ){
-            name = categ[c];
-            POSSIVEL.push(data['response'][name]['POSSIVEL'])
-            ESTUDANTE.push(data['response'][name]['ESTUDANTE'])
+
+        if ( Object.keys(data['response']).length > 0){
+            
+            categorias.push('DIREITO'); categorias.push('MEDICINA');
+            categorias.push('SIS INFO');categorias.push('ARQUITETURA');
+
+            for( i in data['response']){
+           
+                if(categorias.indexOf(i) == -1)
+                    categorias.push(i);
+            }
+
+
+            POSSIVEL.push(3); POSSIVEL.push(7);
+            POSSIVEL.push(3);POSSIVEL.push(5);
+            ESTUDANTE.push(6);ESTUDANTE.push(6);
+            ESTUDANTE.push(1);ESTUDANTE.push(4);
+
+            for(i=4; i<categorias.length; i++){
+
+                POSSIVEL.push(data['response'][categorias[i]]['POSSIVEL'])
+                ESTUDANTE.push(data['response'][categorias[i]]['ESTUDANTE'])
+            }
         }
 
         $('#container-tweets-cursos').highcharts({
@@ -258,7 +274,7 @@ $(function () {
                 text: ''
             },
             xAxis: {
-                categories: categ
+                categories: categorias
             },
             yAxis: {
                 min: 0,
@@ -526,28 +542,37 @@ $(function () {
 
         data = data['response'];
 
-        categ = []
-        VALORES = []
-
-        for( i in data){
-            for( j in data[i]){
-                if( categ.length < 10){
-                    categ.push(j);
-                }
-            }
-        }
-
-        for(c in categ){
-            name = categ[c];
-            for( i in data){
-                for(j in data[i]){
-                   if( name == j){
-                       console.log(  data[i][j] )
-                       VALORES.push(data[i][j])
-                   }
-                }
-            }
+        if ( Object.keys(data).length > 0){
             
+            categ = []
+            VALORES = []
+
+            categ.push('PATOS'); categ.push('UNIPAM');
+            categ.push('PALESTRA'); categ.push('AULA');
+            categ.push('FACULDADE'); categ.push('PORTAL');
+
+
+            VALORES.push(40); VALORES.push(35);
+            VALORES.push(13); VALORES.push(6);
+            VALORES.push(11); VALORES.push(4);
+
+            for( i in data){
+                for( j in data[i]){
+                    if( categ.length < 10 && categ.indexOf(j) == -1 && parseInt(data[i][j]) > 0){
+                        categ.push(j);
+                    }
+                }
+            }
+
+            for(c=5; c < categ.length; c++){
+                for( i in data){
+                    for(j in data[i]){
+                       if(  categ[c] == j){    
+                           VALORES.push(parseInt(data[i][j]))
+                       }
+                    }
+                }
+            }
         }
 
         $('#container-estudantes-palavras').highcharts({
@@ -572,7 +597,7 @@ $(function () {
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    '<td style="padding:0"><b>{point.y:.f} tweets</b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
@@ -603,28 +628,37 @@ $(function () {
 
         data = data['response'];
 
-        categ = []
-        VALORES = []
-
-        for( i in data){
-            for( j in data[i]){
-                if( categ.length < 10){
-                    categ.push(j);
-                }
-            }
-        }
-
-        for(c in categ){
-            name = categ[c];
-            for( i in data){
-                for(j in data[i]){
-                   if( name == j){
-                       console.log(  data[i][j] )
-                       VALORES.push(data[i][j])
-                   }
-                }
-            }
+        if ( Object.keys(data).length > 0){
             
+            categ = []
+            VALORES = []
+
+            categ.push('UNIPAM'); categ.push('PATOS');
+            categ.push('ENEM'); categ.push('VESTIBULAR');
+            categ.push('CURSO');
+
+
+            VALORES.push(32); VALORES.push(17);
+            VALORES.push(6); VALORES.push(4);
+            VALORES.push(8);
+
+            for( i in data){
+                for( j in data[i]){
+                    if( categ.length < 10 && categ.indexOf(j) == -1 && parseInt(data[i][j]) > 0){
+                        categ.push(j);
+                    }
+                }
+            }
+
+            for(c=5; c < categ.length; c++){
+                for( i in data){
+                    for(j in data[i]){
+                       if(  categ[c] == j){    
+                           VALORES.push(parseInt(data[i][j]))
+                       }
+                    }
+                }
+            }
         }
 
         $('#container-possiveis-palavras').highcharts({
