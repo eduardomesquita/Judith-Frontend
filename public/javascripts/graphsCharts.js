@@ -47,7 +47,7 @@ $(function () {
 $(function () {
 
         doGetServer('/graphLocationsStudents', {}, function(data){
-
+            console.log(data)
             data = data['response'];
             vetor1 =undefined
             vetor2 =undefined
@@ -103,7 +103,7 @@ $(function () {
                         
                         {
                             name: data[0].cidade,
-                            y: parseInt(data[0].valor,
+                            y: parseInt(data[0].valor),
                             sliced: true,
                             selected: true
                         },
@@ -489,13 +489,13 @@ $(function () {
             response  = response['response'];
             data = [];
          
-            data.push( ['PATOS DE MINAS', 2] )
-            total += 1
+                data.push( ['PATOS DE MINAS', 2] )
+                total += 1
 
-            for(i=2; i<response.length;i++){
-                data.push( [response[i].chave, response[i].valor] )
-                total += parseInt(response[i].valor)
-            }
+                for(i=2; i<response.length;i++){
+                    data.push( [response[i].chave, response[i].valor] )
+                    total += parseInt(response[i].valor)
+                }
        
            
 
