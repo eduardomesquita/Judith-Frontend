@@ -103,7 +103,7 @@ $(function () {
                         
                         {
                             name: data[0].cidade,
-                            y: data[0].valor,
+                            y: parseInt(data[0].valor),
                             sliced: true,
                             selected: true
                         },
@@ -250,9 +250,8 @@ $(function () {
                     categorias.push(i);
             }
 
-
             POSSIVEL.push(3); POSSIVEL.push(7);
-            POSSIVEL.push(3);POSSIVEL.push(5);
+            POSSIVEL.push(3); POSSIVEL.push(5);
             ESTUDANTE.push(1);ESTUDANTE.push(6);
             ESTUDANTE.push(1);ESTUDANTE.push(4);
 
@@ -323,9 +322,7 @@ $(function () {
             response  = response['response'];
             data = [];
             if( response.length > 1 ){
-                data.push({ name: response[0].chave, y: response[0].valor, sliced: true, selected: true  })
-                total += parseInt(response[0].valor)
-
+               
                  data.push( ['PATOS DE MINAS', 17] )
                  total += 17
                  data.push( ['VAZANTE', 2] )
@@ -341,16 +338,6 @@ $(function () {
                 }
 
 
-            }else{
-                data.push({ name: response[0].chave, y: 100, sliced: true, selected: true  })
-                data.push( ['PATOS DE MINAS', 17] )
-                total += 17
-                data.push( ['VAZANTE', 2] )
-                total += 2
-                data.push( ['CARMO DO PARANAIBA', 1] )
-                total += 1
-                data.push( ['PRESIDENTE OLEGARIO', 1] )
-                total += 1
             }
 
 
@@ -395,9 +382,7 @@ $(function () {
             response  = response['response'];
             data = [];
             if( response.length > 1 ){
-                data.push({ name: response[0].chave, y: response[0].valor, sliced: true, selected: true  })
-                total += parseInt(response[0].valor)
-
+             
                 data.push( ['PATOS DE MINAS', 3] )
                 total += 5
                 data.push( ['PRESIDENTE OLEGARIO', 1] )
@@ -407,12 +392,6 @@ $(function () {
                     data.push( [response[i].chave, parseInt(response[i].valor)] )
                     total += parseInt(response[i].valor)
                 }
-            }else{
-                data.push({ name: response[0].chave, y: 100, sliced: true, selected: true  })
-                data.push( ['PATOS DE MINAS', 3] )
-                total += 5
-                data.push( ['PRESIDENTE OLEGARIO', 1] )
-                total += 2
             }
 
 
@@ -462,20 +441,14 @@ $(function () {
             response  = response['response'];
             data = [];
             if( response.length > 1 ){
-                data.push({ name: response[0].chave, y: response[0].valor, sliced: true, selected: true  })
-                total += parseInt(response[0].valor)
-
+               
                  data.push( ['PATOS DE MINAS', 2] )
                  total += 6
-
 
                 for(i=2; i<response.length;i++){
                     data.push( [response[i].chave, parseInt(response[i].valor)] )
                     total += parseInt(response[i].valor)
                 }
-            }else{
-                data.push( ['PATOS DE MINAS', 2] )
-                total += 6
             }
 
 
@@ -523,9 +496,7 @@ $(function () {
             response  = response['response'];
             data = [];
             if( response.length > 1 ){
-                data.push({ name: response[0].chave, y: response[0].valor, sliced: true, selected: true  })
-                total += parseInt(response[0].valor)
-
+              
                 data.push( ['PATOS DE MINAS', 2] )
                 total += 1
 
@@ -533,9 +504,6 @@ $(function () {
                     data.push( [response[i].chave, response[i].valor] )
                     total += parseInt(response[i].valor)
                 }
-            }else{
-                data.push( ['PATOS DE MINAS', 2] )
-                total += 1
             }
            
 
