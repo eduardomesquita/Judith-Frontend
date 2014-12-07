@@ -47,7 +47,10 @@ $(function () {
 $(function () {
 
         doGetServer('/graphLocationsStudents', {}, function(data){
-            console.log(data)
+            for( i in data['response']){
+                console.log('aquii', data['response'][i], i )
+
+            }
             data = data['response'];
             vetor1 =undefined
             vetor2 =undefined
@@ -546,14 +549,16 @@ $(function () {
 
             categ.push('PATOS'); categ.push('UNIPAM');
             categ.push('COMINE');categ.push('PALESTRA'); 
-            categ.push('AULA');
+            categ.push('AULA');categ.push('MEDICINA');
             categ.push('FACULDADE'); categ.push('PORTAL');
+            categ.push('ARQUITETURA'); categ.push('ENEM');
 
 
             VALORES.push(40); VALORES.push(35);
-            VALORES.push(21);
-            VALORES.push(13); VALORES.push(6);
+            VALORES.push(21); VALORES.push(13); 
+            VALORES.push(6); VALORES.push(6);
             VALORES.push(11); VALORES.push(4);
+            VALORES.push(4); VALORES.push(1);
 
             for( i in data){
                 for( j in data[i]){
@@ -563,7 +568,7 @@ $(function () {
                 }
             }
 
-            for(c=5; c < categ.length; c++){
+            for(c=9; c < categ.length; c++){
                 for( i in data){
                     for(j in data[i]){
                        if(  categ[c] == j){    
@@ -633,13 +638,18 @@ $(function () {
             VALORES = []
 
             categ.push('UNIPAM'); categ.push('PATOS');
-            categ.push('ENEM'); categ.push('VESTIBULAR');
-            categ.push('CURSO');
+            categ.push('MEDICINA');categ.push('ENEM'); 
+            categ.push('VESTIBULAR'); categ.push('SIS INFO');
+            categ.push('ARQUITETURA'); categ.push('CURSO'); 
+            categ.push('DIREITO'); categ.push('AMBIENTAL');
 
 
             VALORES.push(32); VALORES.push(17);
-            VALORES.push(6); VALORES.push(8);
-            VALORES.push(8);
+            VALORES.push(7); VALORES.push(6);
+            VALORES.push(6); VALORES.push(3);
+            VALORES.push(5); VALORES.push(5);
+            VALORES.push(3); VALORES.push(1);
+            
 
             for( i in data){
                 for( j in data[i]){
@@ -649,7 +659,7 @@ $(function () {
                 }
             }
 
-            for(c=5; c < categ.length; c++){
+            for(c=12; c < categ.length; c++){
                 for( i in data){
                     for(j in data[i]){
                        if(  categ[c] == j){    
