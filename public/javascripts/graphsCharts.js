@@ -161,11 +161,13 @@ $(function () {
                     },
                     series: [  {
                                     name: 'Estudantes',
-                                    data:  [parseInt(possible['1']), parseInt(possible['2']), parseInt(possible['3']), parseInt(possible['4']), parseInt(possible['5']), parseInt(possible['6']), parseInt(possible['7']), parseInt(possible['8']), parseInt(possible['9']), parseInt(possible['10']), parseInt(possible['11']), parseInt(possible['12'])]
+                                    data: [parseInt(student['1']), parseInt(student['2']), parseInt(student['3']), parseInt(student['4']), parseInt(student['5']), parseInt(student['6']),parseInt(student['7']),parseInt(student['8']),parseInt(student['9']),parseInt(student['10']),parseInt(student['11']),parseInt(student['12'])]
+                                    
                                 },
                                 {
                                     name: 'Possiveis',
-                                    data: [parseInt(student['1']), parseInt(student['2']), parseInt(student['3']), parseInt(student['4']), parseInt(student['5']), parseInt(student['6']),parseInt(student['7']),parseInt(student['8']),parseInt(student['9']),parseInt(student['10']),parseInt(student['11']),parseInt(student['12'])]
+                                    data:  [parseInt(possible['1']), parseInt(possible['2']), parseInt(possible['3']), parseInt(possible['4']), parseInt(possible['5']), parseInt(possible['6']), parseInt(possible['7']), parseInt(possible['8']), parseInt(possible['9']), parseInt(possible['10']), parseInt(possible['11']), parseInt(possible['12'])]
+                                
                                 }
                             ]
                 });
@@ -216,10 +218,12 @@ $(function () {
                     },
                     series: [ {
                         name: 'Estudantes',
-                        data: [parseInt(possible['00']), parseInt(possible['01']), parseInt(possible['02']), parseInt(possible['03']), parseInt(possible['04']), parseInt(possible['05']), parseInt(possible['06']), parseInt(possible['07']), parseInt(possible['08']), parseInt(possible['09']), parseInt(possible['10']), parseInt(possible['11']), parseInt(possible['12']), parseInt(possible['13']), parseInt(possible['14']), parseInt(possible['15']), parseInt(possible['16']), parseInt(possible['17']), parseInt(possible['18']), parseInt(possible['19']), parseInt(possible['20']), parseInt(possible['21']), parseInt(possible['22']), parseInt(possible['23'])]
+                        data: [parseInt(student['00']), parseInt(student['01']), parseInt(student['02']), parseInt(student['03']), parseInt(student['04']), parseInt(student['05']), parseInt(student['06']), parseInt(student['07']), parseInt(student['08']), parseInt(student['09']), parseInt(student['10']), parseInt(student['11']), parseInt(student['12']), parseInt(student['13']), parseInt(student['14']), parseInt(student['15']), parseInt(student['16']), parseInt(student['17']), parseInt(student['18']), parseInt(student['19']), parseInt(student['20']), parseInt(student['21']), parseInt(student['22']), parseInt(student['23'])]
+                        
                     },{
                         name: 'Possiveis',
-                        data: [parseInt(student['00']), parseInt(student['01']), parseInt(student['02']), parseInt(student['03']), parseInt(student['04']), parseInt(student['05']), parseInt(student['06']), parseInt(student['07']), parseInt(student['08']), parseInt(student['09']), parseInt(student['10']), parseInt(student['11']), parseInt(student['12']), parseInt(student['13']), parseInt(student['14']), parseInt(student['15']), parseInt(student['16']), parseInt(student['17']), parseInt(student['18']), parseInt(student['19']), parseInt(student['20']), parseInt(student['21']), parseInt(student['22']), parseInt(student['23'])]
+                        data: [parseInt(possible['00']), parseInt(possible['01']), parseInt(possible['02']), parseInt(possible['03']), parseInt(possible['04']), parseInt(possible['05']), parseInt(possible['06']), parseInt(possible['07']), parseInt(possible['08']), parseInt(possible['09']), parseInt(possible['10']), parseInt(possible['11']), parseInt(possible['12']), parseInt(possible['13']), parseInt(possible['14']), parseInt(possible['15']), parseInt(possible['16']), parseInt(possible['17']), parseInt(possible['18']), parseInt(possible['19']), parseInt(possible['20']), parseInt(possible['21']), parseInt(possible['22']), parseInt(possible['23'])]
+                    
                     }]
                 });
 
