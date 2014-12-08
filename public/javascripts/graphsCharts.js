@@ -29,11 +29,11 @@ $(function () {
                         name: 'Students',
                         data: [{
                                  name: 'Estudantes',
-                                 y: data['response']['possible'],
+                                 y: data['response']['student'],
                                  sliced: true,
                                  selected: true
                                },
-                               ['Possíveis Estudantes',   data['response']['student']],
+                               ['Possíveis Estudantes',   data['response']['possible']],
                            
                         ]
                     }]
@@ -642,6 +642,7 @@ $(function () {
             categ.push('VESTIBULAR'); categ.push('SIS INFO');
             categ.push('ARQUITETURA'); categ.push('CURSO'); 
             categ.push('DIREITO'); categ.push('AMBIENTAL');
+            categ.push('PSICOLOGIA');
 
 
             VALORES.push(32); VALORES.push(17);
@@ -649,6 +650,7 @@ $(function () {
             VALORES.push(6); VALORES.push(3);
             VALORES.push(5); VALORES.push(5);
             VALORES.push(3); VALORES.push(1);
+            VALORES.push(7);
             
 
             for( i in data){
